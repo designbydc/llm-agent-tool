@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import 'openai/shims/node'
-import { doLLM } from './src/llm'
+import { audioToolDefinition } from './src/tools/audio'
+import { doAgent } from './src/agent'
 
 const userMessage = process.argv[2]
 
@@ -9,9 +10,7 @@ if (!userMessage) {
     process.exit(1)
 }
 
-const message = await doLLM({
-    message: userMessage,
+const message = doAgent({
+    userMessage,
+    tools: [audioToolDefinition]
 })
-
-console.log(message)
-
