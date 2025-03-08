@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import 'openai/shims/node'
-import { audioToolDefinition } from './src/tools/audio'
+import { tools } from './src/tools/'
 import { doAgent } from './src/agent'
 
 const userMessage = process.argv[2]
@@ -12,5 +12,5 @@ if (!userMessage) {
 
 const message = doAgent({
     userMessage,
-    tools: [audioToolDefinition]
+    tools
 })
